@@ -55,7 +55,7 @@ def _frame(tf, anchor=TOP):
 
 def text(s, x, y, w, h, paras, size=12, color=T.INK, font=T.BODY_FONT, align=L, anchor=TOP,
          spacing=None, shape=None):
-    """paras: str | [str, ...] | [[(text, {size,color,font}), ...], ...] (one inner list per paragraph)."""
+    """paras: str | [str, ...] | [[(text, {size,color,font,italic}), ...], ...] (one inner list per paragraph)."""
     if shape is None:
         shape = s.shapes.add_textbox(Inches(x), Inches(y), Inches(w), Inches(h))
     tf = shape.text_frame
@@ -68,7 +68,7 @@ def text(s, x, y, w, h, paras, size=12, color=T.INK, font=T.BODY_FONT, align=L, 
         if spacing:
             p.line_spacing = spacing
         for t, o in (para if isinstance(para, list) else [(para, {})]):
-            _run(p, t, o.get('size', size), o.get('color', color), o.get('font', font))
+            _run(p, t, o.get('size', size), o.get('color', color), o.get('font', font), italic=o.get('italic', False))
     return shape
 
 

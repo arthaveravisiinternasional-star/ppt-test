@@ -1,4 +1,4 @@
-"""Founders Arena / DSC Season 17, v4 (Oct 2026). 15 main slides + 4 appendix, same order and look as DSC v3.
+"""Founders Arena / DSC Season 17, v4.1 (Oct 2026). 15 main slides + 4 appendix, same order and look as DSC v3.
 
 Built by build_deck_dsc4.py, which swaps this module in for deck.content. v4 = DSC v3 + the ITEC v3 validation
 strategy (prove magic -> prove repeat value -> validate commercial model -> scale) + clearer commercial and financial
@@ -8,6 +8,8 @@ Locked decisions: interactive educational toy growing into a creative learning p
 pre-revenue · B2B-first, B2C as direct sales + validation channel · Ocean Artist 3-lesson pilot before any LMS ·
 Studio built as institutional pilots need it · DIY -> Central Java -> Indonesia · Rp200M 12-month capital plan.
 Team for DSC: Haikal Hilmi CEO, Salsabila Khoirunnisa CMO (confirmed by the founders, Oct 2026).
+v4.1 (founders' copy, Oct 2026): slides 2, 11, 12, 13 and Appendix C. Rp200M is the total 12-month capital plan, not a
+Rp200M grant request to DSC; no cash balance on the main slides because the funding is not secured yet.
 
 Honesty rules: no LMS / course claim, no validated pricing, per-drawing platform price is a test hypothesis only (not
 shown as a price). All projections are the founders' Sep 2026 model (content_dsc.py) and are labelled as projections.
@@ -26,7 +28,8 @@ PILOT_ART = I3.PILOT_ART
 # B2B managed session Rp1,000,000 (up to 30 children): direct cost Rp250,000 -> contribution Rp750,000 (75%)
 # 12 months: conservative 300 packs + 24 sessions = Rp38.7M; base 600 packs + 48 sessions = Rp77.4M
 # direct costs Rp12M / Rp24M -> gross contribution Rp26.7M / Rp53.4M; OPEX Rp158M -> net -Rp131.3M / -Rp104.6M
-# cash at month 12 with Rp200M = 200 + revenue - direct costs - OPEX = Rp68.7M / Rp95.4M
+# illustrative cash at month 12 IF the full Rp200M is secured upfront = 200 + revenue - direct - OPEX = Rp68.7M / Rp95.4M
+# (Appendix C only, labelled illustrative)
 # Rp200M plan lines: team 96 · GTM 30 · product 24 · production 20 · content 20 · legal & contingency 10
 # vs P&L OPEX 158 (team 96 · GTM 24 · product 18 · content 15 · legal 5): production 20 funds direct costs before
 # revenue arrives; the other 22 (GTM 6 · product 6 · content 5 · legal/contingency 5) is headroom held for the gates.
@@ -42,13 +45,14 @@ SLIDE_1_COVER = {
 # ---------------------------------------------------------------- 2 business overview (slides_dsc.s_overview) · Minor
 SLIDE_OVERVIEW = {
     **V3.SLIDE_OVERVIEW,
-    'tag': 'LIVE · scanvas.id · early validation · pre-revenue',
+    'tag': 'Live product · First pilot completed · Pre-revenue',
     'blocks': [('palette', 'Product',
                 'Children color a Scanvas sheet, photograph it in the browser, and their own artwork comes alive '
                 'with motion, sound, and facts.'),
                ('school', 'Customers · B2B-first',
-                'Schools, PAUD/TK, TPA, and event organizers buy sessions for many children. Parents buy packs: '
-                'our direct sales and validation channel.'),
+                'Our primary target customers are PAUD/TK, schools, and event organizers seeking interactive '
+                'educational activities for groups of children. Parents are our B2C customers through physical '
+                'creative packs, providing a direct channel to validate demand and repeat purchases.'),
                ('wand-sparkles', 'Value proposition',
                 'Hands-on creativity stays at the center; technology extends it into interactive learning, with '
                 'no app to install.')],
@@ -186,26 +190,30 @@ SLIDE_IMPACT = {
 # ---------------------------------------------------------------- 11 financial (slides_dsc4.s_financial) · Major
 SLIDE_FINANCIAL = {
     'title': 'Financial Overview',
-    'stage': [('Revenue to date', 'Rp0'), ('Stage', 'Pre-revenue')],
-    'units': V3.SLIDE_FINANCIAL['units'],
+    'stage': [('Revenue to date', 'Rp0'), ('Stage', 'Live product ·\npre-revenue')],
+    'units': [('B2C pack', [('Selling price', 'Rp49,000'), ('Direct cost', 'Rp20,000'), ('Contribution', 'Rp29,000')],
+               '59% margin'),
+              ('B2B managed\nsession', [('Selling price', 'Rp1,000,000'), ('Direct cost', 'Rp250,000'),
+                                        ('Contribution', 'Rp750,000')], '75% margin')],
     'units_note': V3.SLIDE_FINANCIAL['units_note'],
-    'scenario_title': '12-month projection',
+    'scenario_title': '12-month financial projection',
     'scenario_tag': 'PROJECTION · NOT ACTUALS',
-    'scenario_head': ['', 'Conservative', 'Base'],
+    'scenario_head': ['', 'Conservative', 'Base case'],
     # (label, conservative, base, style) style: '' row · 'sum' bold · 'sub' small · 'cash' highlight
-    'scenario': [('B2C packs (≈25 / ≈50 a month)', '300', '600', 'sub'),
-                 ('Paid sessions (2 / 4 a month)', '24', '48', 'sub'),
+    'scenario': [('B2C packs sold', '300', '600', 'sub'),
+                 ('Paid B2B sessions', '24', '48', 'sub'),
                  ('Customer revenue', 'Rp38.7M', 'Rp77.4M', 'sum'),
                  ('Direct costs', '−Rp12.0M', '−Rp24.0M', ''),
-                 ('Gross contribution (69%)', 'Rp26.7M', 'Rp53.4M', 'sum'),
-                 ('Operating expenses', '−Rp158M', '−Rp158M', ''),
-                 ('Net result, year 1', '−Rp131.3M', '−Rp104.6M', 'sum'),
-                 ('Cash at month 12 with Rp200M', 'Rp68.7M', 'Rp95.4M', 'cash')],
-    'footer': 'Year 1 is a planned loss while we validate repeat demand. The loss, not the full Rp200M, is what '
-              'capital covers. Full P&L in Appendix C.',
-    'notes': 'Same model as before, now shown in full. Base case means about 50 packs and 4 sessions a month. Year-1 '
-             'net result is minus Rp104.6M (base) or minus Rp131.3M (conservative); with Rp200M, cash stays positive '
-             'at month 12. These are projections, not results. Grant money is financing, never revenue.',
+                 ('Gross contribution', 'Rp26.7M', 'Rp53.4M', 'sum'),
+                 ('Operating expenses', '−Rp158.0M', '−Rp158.0M', ''),
+                 ('Projected net result', '−Rp131.3M', '−Rp104.6M', 'cash')],
+    'disclaimer': 'Financial projections are planning assumptions, not actual revenue or secured funding.',
+    'footer': 'Year 1 prioritizes product validation and repeatable sales over profitability. Operating losses will '
+              'require financing, with expenditure adjusted to funding availability and validation results.',
+    'notes': 'Same model as before. Base case means about 50 packs and 4 sessions a month. Year-1 net result is minus '
+             'Rp104.6M (base) or minus Rp131.3M (conservative). We do not show a year-end cash balance here because '
+             'the Rp200M is not secured yet; spending follows the funding we actually have and the validation results. '
+             'Grant money is financing, never revenue.',
 }
 
 # ---------------------------------------------------------------- 12 funding (slides_dsc4.s_funding) · Major
@@ -213,48 +221,56 @@ SLIDE_FUNDING = {
     'title': 'Funding Needs & Use of Funds',
     'label': '12-month capital plan',
     'amount': 'Rp200M',
-    'purpose': 'Funds 12 months of validation, released stage by stage as each gate is passed.',
-    'sources': [('DSC support', '[TBD]'), ('Other sources', '[TBD]')],
-    'alloc_title': 'Use of funds',
-    # (icon, use, detail, share)
-    'alloc': [('users', 'Team & Operations', 'Rp96M · 2 founders × Rp4M × 12 months', '48%'),
-              ('school', 'Go-to-Market', 'Rp30M · demos, school pilots, community', '15%'),
-              ('scan-line', 'Product & Technology', 'Rp24M · scan reliability, infrastructure, Studio', '12%'),
-              ('palette', 'Production', 'Rp20M · packs, samples, session materials', '10%'),
-              ('book-open', 'Learning Content', 'Rp20M · lesson pilot, worlds by demand', '10%'),
-              ('shield-check', 'Legal & Contingency', 'Rp10M · administration, accounting', '5%')],
-    'recon_title': 'How Rp200M links to the P&L',
-    # (label, value, style)
-    'recon': [('Operating expenses in the P&L', 'Rp158M', ''),
-              ('Production: funds direct costs until sales come in', 'Rp20M', ''),
-              ('Headroom in GTM, product, content, legal', 'Rp22M', ''),
-              ('Cash left at month 12 (base / conservative)', 'Rp95M / Rp69M', 'cash')],
-    'gates_title': 'Spending follows validation gates',
-    'gates': [('M1–3', 'Scan reliability + Ocean Artist 3-lesson pilot'),
-              ('M3–6', 'Paid sessions, rebooking, B2C conversion'),
-              ('M6–12', 'Scale GTM and content only where data supports')],
-    'notes': 'Rp200M is a 12-month plan, not a loss: Rp158M is operating expense, Rp20M funds production until sales '
-             'come in, Rp22M is headroom held for the gates. Customer revenue covers direct costs, so the base case ends '
-             'the year with about Rp95M. We are not asking DSC to fund all of it; the split between DSC support and '
-             'other sources is still to be confirmed against the competition rules, including whether founder '
-             'compensation is an eligible use.',
+    'purpose': 'Funding to validate repeat demand, strengthen the product, and build a repeatable institutional sales '
+               'model.',
+    'alloc_title': 'Planned allocation',
+    # (category, budget, share)
+    'alloc': [('Team & Operations', 'Rp96M', '48%'),
+              ('Go-to-Market', 'Rp30M', '15%'),
+              ('Product & Technology', 'Rp24M', '12%'),
+              ('Production & Materials', 'Rp20M', '10%'),
+              ('Learning Content', 'Rp20M', '10%'),
+              ('Legal & Contingency', 'Rp10M', '5%')],
+    'total': ('Total', 'Rp200M', '100%'),
+    'strategy_title': 'Funding strategy',
+    # (icon, heading, text)
+    'strategy': [('star', 'DSC support', 'Requested as a contribution toward the 12-month capital plan, subject to '
+                                          'the program’s funding limits.'),
+                 ('handshake', 'Additional financing', 'To be secured as needed. Unconfirmed funding is not counted as '
+                                                       'available capital.'),
+                 ('layers', 'Capital deployment', 'Spending will be phased according to funding availability and '
+                                                  'validation results.')],
+    'phases_title': 'Milestone-based deployment',
+    # (when, heading, text)
+    'phases': [('M1–3', 'Prove Repeat Value', 'Improve scan reliability and launch the Ocean Artist 3-lesson pilot. '
+                                              'Measure lesson completion, repeat creation, and willingness to pay.'),
+               ('M3–6', 'Validate Commercial Demand', 'Convert institutional pilots into paid sessions. Test B2C '
+                                                      'conversion, repeat bookings, and contribution margins.'),
+               ('M6–12', 'Scale What Works', 'Expand institutional acquisition, improve Scanvas Studio, and develop '
+                                             'learning content only where demand is validated.')],
+    'outcomes_title': 'Expected outcomes · base-case targets',
+    'outcomes': ['48 paid institutional sessions', '600 B2C packs sold', '≥20% institutional rebooking',
+                 '≥95% scan success', 'Rp77.4M first-year customer revenue'],
+    'outcomes_note': 'Targets are projections, not guaranteed outcomes.',
+    'notes': 'Rp200M is the total 12-month capital plan, not a Rp200M grant request. DSC support is requested as a '
+             'contribution, within the program’s funding limits. Other financing is not counted until it is confirmed, '
+             'and spending is phased by funding availability and validation results.',
 }
 
 # ---------------------------------------------------------------- 13 team (shared s12_team) · Minor
 SLIDE_12_TEAM = {
     **V3.SLIDE_12_TEAM,
     'team': [('HH', 'Haikal Hilmi', 'CEO & Co-Founder',
-              'Built the core scan-to-animation technology · ex-ByteDance backend intern · Information '
-              'Engineering, UGM', 'founder_hh.png'),
+              'Technical founder who built Scanvas’ core scan-to-animation technology. Former ByteDance Backend '
+              'Engineering Intern. Information Engineering graduate, Universitas Gadjah Mada.', 'founder_hh.png'),
              ('SK', 'Salsabila Khoirunnisa', 'CMO & Co-Founder',
-              'Brand, customers & go-to-market · ran community programs with 200+ volunteers and 20+ partners · UGM',
-              'founder_sk.png')],
-    'closing': 'A technical CEO who built and shipped the product, and a CMO who has run community programs at '
-               'scale.',
-    'final': 'Live product, first pilot, two improvements shipped from it.',
-    'notes': 'Haikal: built the scan-to-animation technology; backend intern at ByteDance; engineering PM of the Gadjah '
-             'Mada Aerospace Team. Salsabila: Chief of Social Impact at Gifood (7+ community partners), Program '
-             'Manager at Sedekah Baju Yogyakarta (200+ volunteers, 20+ partner organizations).',
+              'Leads branding, customer discovery, partnerships, and go-to-market. Experience coordinating community '
+              'programs involving 200+ volunteers and 20+ partners.', 'founder_sk.png')],
+    'closing': 'Together, we bring product execution and community-driven go-to-market experience to early '
+               'childhood creative learning.',
+    'final': 'Live product · First 30-child pilot completed · Two product improvements shipped from feedback.',
+    'notes': 'Haikal built the scan-to-animation technology and leads the company; Salsabila leads branding, customer '
+             'discovery, partnerships, and go-to-market.',
 }
 
 # ---------------------------------------------------------------- 14 roadmap (slides_dsc4.s_roadmap) · Major
@@ -321,18 +337,23 @@ SLIDE_SOURCES = {
 SLIDE_PNL = {
     'title': 'Appendix C · 12-Month P&L and Cash',
     'head': ['', 'Conservative', 'Base'],
-    'rows': V3.SLIDE_PNL['rows'] + [('Capital plan', 'Rp200.0M', 'Rp200.0M', False),
-                                    ('Cash at month 12', 'Rp68.7M', 'Rp95.4M', True)],
+    'rows': V3.SLIDE_PNL['rows'] + [('Capital plan, if fully secured', 'Rp200.0M', 'Rp200.0M', False),
+                                    ('Cash at month 12 (illustrative)', 'Rp68.7M', 'Rp95.4M', True)],
     'assump_title': 'Assumptions',
     'assumptions': ['Projection from the founders’ model (Sep 2026), not actual results',
-                    'Pack Rp49K; direct cost Rp20K (print & packaging Rp10K, DIY delivery Rp10K)',
-                    'Managed session Rp1M, up to 30 children; direct cost Rp250K',
+                    'Pack Rp49K, direct cost Rp20K · session Rp1M (up to 30 children), direct cost Rp250K',
                     'Volume: 25–50 packs and 2–4 sessions a month',
                     'Founders Rp4M a month each (lean, below market)',
-                    'Studio and lesson revenue excluded (upside)',
-                    'Grant money is financing, never revenue'],
-    'notes': 'Cash at month 12 = Rp200M + customer revenue − direct costs − operating expenses. The Rp20M production '
-             'line and Rp22M headroom in the capital plan are not extra P&L costs; see slide 12.',
+                    'Studio and lesson revenue excluded · grant money is financing, never revenue'],
+    'scenario_title': 'Illustrative funding scenario',
+    'scenario_lead': 'Assuming the full Rp200M capital plan is secured and available at the start of the period, with '
+                     'no additional cash flows beyond those modeled:',
+    'scenario': [('Conservative', 'Rp68.7M remaining'), ('Base case', 'Rp95.4M remaining')],
+    'scenario_note': 'These figures represent simplified illustrative balances, not confirmed cash reserves or a '
+                     'complete monthly cash-flow forecast. Actual runway depends on funding secured, timing of '
+                     'disbursements, sales collection, and working-capital requirements.',
+    'notes': 'Illustrative cash at month 12 = Rp200M + customer revenue − direct costs − operating expenses, only if the '
+             'full Rp200M is secured upfront.',
 }
 
 # ---------------------------------------------------------------- appendix D competitor evidence (slides_dsc.s_competitors)

@@ -1,7 +1,7 @@
-"""Build DSC Season 17 v4 (Oct 2026): same template, look and slide order as DSC v3 (15 main + 4 appendix), with the
+"""Build DSC Season 17 v4.1 (Oct 2026): same template, look and slide order as DSC v3 (15 main + 4 appendix), with the
 ITEC v3 validation story and fuller commercial/financial evidence. DSC v3 files and output are not touched.
 
-    python build_deck_dsc4.py                  # -> output/dsc4/SCANVAS_DSC_S17_v4.pptx
+    python build_deck_dsc4.py                  # -> output/dsc4/SCANVAS_DSC_S17_v4.1.pptx
     python build_deck_dsc4.py --render 5 10    # previews in output/dsc4/preview
     python build_deck_dsc4.py --render --pdf   # final: embed fonts + PDF
 """
@@ -21,11 +21,11 @@ from deck import recolor, slides as S, slides_dsc as D, slides_dsc4 as V, slides
 from deck import theme as T  # noqa: E402
 
 OUT_DIR = T.OUTPUT / 'dsc4'
-OUT = OUT_DIR / 'SCANVAS_DSC_S17_v4.pptx'
+OUT = OUT_DIR / 'SCANVAS_DSC_S17_v4.1.pptx'
 
 # (slide function, Freesia layout) in DSC guideline order
 DECK = [(S.s1_cover, 'TITLE'),                      # 1 Cover                       keep
-        (D.s_overview, 'TITLE_ONLY_3_1_1_1'),       # 2 Business Overview           minor
+        (V.s_overview, 'TITLE_ONLY_3_1_1_1'),       # 2 Business Overview           minor
         (V.s_problem, 'TITLE_ONLY_3_2'),            # 3 Problem & Opportunity       minor
         (D.s_solution, 'TITLE_ONLY'),               # 4 Solution                    keep
         (I.s_market, 'TITLE_AND_BODY_1_1'),         # 5 Market Size & Target Market major
@@ -36,7 +36,7 @@ DECK = [(S.s1_cover, 'TITLE'),                      # 1 Cover                   
         (D.s_impact, 'TITLE_ONLY_2_1'),             # 10 ESG / SDGs / Impact        keep
         (V.s_financial, 'TITLE_AND_BODY'),          # 11 Financial Overview         major
         (V.s_funding, 'TITLE_ONLY_3_2'),            # 12 Funding Needs              major
-        (S.s12_team, 'SECTION_HEADER_1_1'),         # 13 Team                       minor
+        (V.s_team, 'SECTION_HEADER_1_1'),          # 13 Team                       minor
         (V.s_roadmap, 'BLANK_1_1'),                 # 14 Milestones & Roadmap       major
         (V.s_closing, 'CAPTION_ONLY'),              # 15 Closing                    minor
         (S.s7_different, 'TITLE_ONLY_2_1'),         # A Technology edge
