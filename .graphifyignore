@@ -1,0 +1,6 @@
+assets/
+output/
+__pycache__/
+*.png
+*.pdf
+*.pptx

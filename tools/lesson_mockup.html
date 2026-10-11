@@ -1,0 +1,49 @@
+<html><head>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Varela+Round&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0}
+body{width:1200px;height:860px;font-family:'Varela Round',sans-serif;background:#F7F8FC;color:#172033;display:flex;flex-direction:column}
+.top{height:84px;background:#fff;border-bottom:2px solid #D9DEEA;display:flex;align-items:center;padding:0 32px;gap:18px}
+.logo{width:44px;height:44px}
+.t1{font-family:Fredoka;font-weight:700;font-size:28px}
+.t2{font-size:17px;color:#526078}
+.pill{margin-left:auto;background:#EDE9FE;color:#5B21B6;font-family:Fredoka;font-weight:600;font-size:18px;padding:10px 18px;border-radius:999px}
+.main{flex:1;display:flex;gap:24px;padding:24px 32px}
+.canvas{flex:1;background:#fff;border:2px solid #D9DEEA;border-radius:16px;position:relative;overflow:hidden}
+.canvas img.g{position:absolute;left:60px;top:90px;width:640px;opacity:1}
+.stepbadge{position:absolute;left:24px;top:22px;background:#7C3AED;color:#fff;font-family:Fredoka;font-weight:700;font-size:22px;padding:10px 20px;border-radius:12px}
+.hint{position:absolute;left:24px;bottom:22px;right:24px;background:#EFF6FF;color:#1D4ED8;font-size:19px;padding:14px 18px;border-radius:12px}
+.tools{position:absolute;right:20px;top:22px;display:flex;flex-direction:column;gap:12px}
+.dot{width:40px;height:40px;border-radius:50%;border:3px solid #fff;box-shadow:0 0 0 2px #D9DEEA}
+.side{width:330px;display:flex;flex-direction:column;gap:14px}
+.card{background:#fff;border:2px solid #D9DEEA;border-radius:16px;padding:18px 20px}
+.h{font-family:Fredoka;font-weight:700;font-size:21px;margin-bottom:10px}
+.st{display:flex;align-items:center;gap:12px;font-size:17px;padding:7px 0;color:#526078}
+.n{width:30px;height:30px;border-radius:50%;background:#F1F5F9;display:flex;align-items:center;justify-content:center;font-family:Fredoka;font-weight:700;font-size:16px;color:#526078;flex:none}
+.done .n{background:#15803D;color:#fff}
+.cur{color:#172033;font-weight:bold}
+.cur .n{background:#7C3AED;color:#fff}
+.prev{border-radius:12px;width:100%;height:120px;object-fit:cover;display:block}
+.cap{font-size:15px;color:#526078;margin-top:8px}
+svg.trace{position:absolute;left:60px;top:90px;width:640px;height:640px}
+</style></head><body>
+<div class="top"><img class="logo" src="LOGO"><div><div class="t1">Ocean Artist: Let's Draw a Whale</div><div class="t2">Scanvas Creative Class · Ages 5–10</div></div><div class="pill">Step 3 of 6</div></div>
+<div class="main">
+ <div class="canvas">
+   <img class="g" src="GUIDE">
+   <img class="g" src="TRACE" style="clip-path:inset(0 52% 0 0);mix-blend-mode:multiply"><div class="stepbadge">Practice digitally</div>
+   <div class="tools"><div class="dot" style="background:#7C3AED"></div><div class="dot" style="background:#FACC15"></div><div class="dot" style="background:#2563EB"></div><div class="dot" style="background:#172033"></div></div>
+   <div class="hint">Trace the guide lines, then finish the tail on your own.</div>
+ </div>
+ <div class="side">
+  <div class="card"><div class="h">Lesson steps</div>
+   <div class="st done"><div class="n">✓</div>Learn the basic shape</div>
+   <div class="st done"><div class="n">✓</div>Draw step-by-step</div>
+   <div class="st cur"><div class="n">3</div>Practice digitally</div>
+   <div class="st"><div class="n">4</div>Color and personalize</div>
+   <div class="st"><div class="n">5</div>Bring it alive</div>
+   <div class="st"><div class="n">6</div>Discover whale facts</div>
+  </div>
+  <div class="card"><div class="h">Your whale's world</div><img class="prev" src="WORLD"><div class="cap">Finished whales swim into the Ocean world.</div></div>
+ </div>
+</div></body></html>

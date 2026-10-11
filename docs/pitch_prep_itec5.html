@@ -1,0 +1,580 @@
+<title>Scanvas ITEC Pitch Prep</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Varela+Round&display=swap">
+<style>
+/* Layout: one reading column, sticky section nav; script as slide cards with a timing rail, Q&A as expandable rows. */
+:root {
+  --bg: #F7F8FC; --surface: #FFFFFF; --ink: #172033; --muted: #526078; --line: #D9DEEA;
+  --accent: #7C3AED; --accent-deep: #5B21B6; --accent-soft: #EDE9FE; --accent-faint: #F5F3FF;
+  --warn-bg: #FEF3C7; --warn-ink: #92400E; --ok-bg: #DCFCE7; --ok-ink: #15803D;
+  --s-ink: #5B21B6; --s-bg: #EDE9FE; --h-ink: #1D4ED8; --h-bg: #DBEAFE;
+  --display: 'Fredoka', 'Trebuchet MS', system-ui, sans-serif;
+  --body: 'Varela Round', 'Segoe UI', system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #12131C; --surface: #1B1D2A; --ink: #ECEEF7; --muted: #A3ACC2; --line: #2E3245;
+  --accent: #A78BFA; --accent-deep: #C4B5FD; --accent-soft: #2B2450; --accent-faint: #211D38;
+  --warn-bg: #3A2A0E; --warn-ink: #FCD34D; --ok-bg: #0F2E1C; --ok-ink: #86EFAC;
+  --s-ink: #C4B5FD; --s-bg: #2B2450; --h-ink: #93C5FD; --h-bg: #172A4A; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #12131C; --surface: #1B1D2A; --ink: #ECEEF7; --muted: #A3ACC2; --line: #2E3245;
+  --accent: #A78BFA; --accent-deep: #C4B5FD; --accent-soft: #2B2450; --accent-faint: #211D38;
+  --warn-bg: #3A2A0E; --warn-ink: #FCD34D; --ok-bg: #0F2E1C; --ok-ink: #86EFAC;
+  --s-ink: #C4B5FD; --s-bg: #2B2450; --h-ink: #93C5FD; --h-bg: #172A4A; color-scheme: dark }
+
+body { background: var(--bg); color: var(--ink); font: 16px/1.6 var(--body); }
+.wrap { max-width: 860px; margin: 0 auto; padding-inline: 20px; padding-block: 32px 80px; }
+h1, h2, h3 { font-family: var(--display); font-weight: 700; line-height: 1.15; text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(30px, 6vw, 44px); }
+h2 { font-size: 26px; margin-bottom: 6px; }
+h3 { font-size: 19px; font-weight: 600; }
+p { margin: 0; }
+.eyebrow { font-family: var(--display); font-weight: 600; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+.lede { color: var(--muted); max-width: 62ch; }
+header.top { display: grid; gap: 12px; margin-bottom: 20px; }
+.slot { display: flex; flex-wrap: wrap; gap: 8px; }
+.pill { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 999px; font-size: 13px; background: var(--surface); border: 1px solid var(--line); }
+.pill b { font-family: var(--display); font-weight: 600; }
+
+nav.sec { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); padding-block: 10px; border-bottom: 1px solid var(--line); display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 28px; }
+nav.sec a { font-family: var(--display); font-weight: 600; font-size: 14px; color: var(--accent-deep); text-decoration: none; padding: 6px 14px; border-radius: 999px; background: var(--accent-faint); }
+nav.sec a:hover, nav.sec a:focus-visible { background: var(--accent-soft); outline: 2px solid var(--accent); outline-offset: 1px; }
+
+section { scroll-margin-top: 70px; margin-bottom: 48px; display: grid; gap: 16px; }
+.note { background: var(--warn-bg); color: var(--warn-ink); border-radius: 12px; padding: 12px 16px; font-size: 14px; }
+.note b { font-family: var(--display); font-weight: 600; }
+.legend { display: flex; flex-wrap: wrap; gap: 8px; font-size: 13px; color: var(--muted); align-items: center; }
+
+/* script */
+.slide { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 18px 20px; display: grid; gap: 10px; }
+.slide-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 12px; }
+.num { font-family: var(--display); font-weight: 700; color: var(--accent); font-size: 15px; min-width: 2ch; font-variant-numeric: tabular-nums; }
+.slide-head h3 { flex: 1 1 260px; min-width: 0; }
+.time { font-variant-numeric: tabular-nums; font-size: 13px; color: var(--muted); white-space: nowrap; }
+.who { font-family: var(--display); font-weight: 600; font-size: 12px; padding: 2px 10px; border-radius: 999px; }
+.who.s { color: var(--s-ink); background: var(--s-bg); }
+.who.h { color: var(--h-ink); background: var(--h-bg); }
+.say { font-size: 17px; line-height: 1.65; max-width: 66ch; }
+.say p + p { margin-top: 8px; }
+.say .sp { font-family: var(--display); font-weight: 600; font-size: 13px; letter-spacing: .04em; margin-right: 4px; }
+.say .sp.s { color: var(--s-ink); } .say .sp.h { color: var(--h-ink); }
+.stage { font-style: normal; color: var(--accent-deep); font-family: var(--display); font-weight: 500; }
+.cue { font-size: 14px; color: var(--muted); background: var(--accent-faint); border-radius: 8px; padding: 8px 12px; }
+.fill { background: var(--warn-bg); color: var(--warn-ink); border-radius: 6px; padding: 0 6px; font-size: .92em; }
+.rail { height: 6px; background: var(--accent-faint); border-radius: 3px; overflow: hidden; }
+.rail i { display: block; height: 100%; background: var(--accent); border-radius: 3px; }
+
+/* Q&A */
+.tools { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.tools input[type="search"] { flex: 1 1 220px; min-width: 0; font: inherit; font-size: 15px; padding: 9px 14px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); }
+.tools input:focus-visible, .chip:focus-visible, .toggle:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.chip { font: 600 13px var(--display); padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; }
+.chip[aria-pressed="true"] { background: var(--accent); color: #fff; border-color: var(--accent); }
+.toggle { font: 600 13px var(--display); padding: 6px 14px; border-radius: 999px; border: 1px solid var(--accent); background: transparent; color: var(--accent-deep); cursor: pointer; }
+.toggle[aria-pressed="true"] { background: var(--accent-soft); }
+.cat { margin-top: 10px; display: grid; gap: 8px; }
+.cat > h3 { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+.cat > h3 small { font: 13px var(--body); color: var(--muted); }
+details.q { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; }
+details.q > summary { list-style: none; cursor: pointer; padding: 14px 18px; display: flex; gap: 12px; align-items: flex-start; }
+details.q > summary::-webkit-details-marker { display: none; }
+details.q > summary::before { content: "+"; font: 700 18px var(--display); color: var(--accent); line-height: 1.3; flex: none; width: 14px; }
+details.q[open] > summary::before { content: "–"; }
+.qtext { font-family: var(--display); font-weight: 600; font-size: 16.5px; line-height: 1.35; min-width: 0; }
+.qtext .by { font: 12px var(--body); color: var(--muted); margin-left: 6px; }
+.ans { padding: 0 18px 16px 44px; display: grid; gap: 8px; }
+.ans .a { max-width: 66ch; }
+.ans .tip { font-size: 14px; color: var(--muted); }
+.ans .tip b { color: var(--ink); font-family: var(--display); font-weight: 600; }
+.ans .avoid { font-size: 14px; color: var(--warn-ink); background: var(--warn-bg); border-radius: 8px; padding: 6px 10px; }
+.empty { color: var(--muted); font-size: 15px; padding: 12px 0; }
+
+/* numbers */
+.tablewrap { overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; }
+table { border-collapse: collapse; width: 100%; font-size: 15px; }
+th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font: 600 12px var(--display); letter-spacing: .06em; text-transform: uppercase; color: var(--accent); }
+td.v { font-family: var(--display); font-weight: 600; white-space: nowrap; font-variant-numeric: tabular-nums; }
+tr:last-child td { border-bottom: 0; }
+.status { font: 600 11px var(--display); padding: 2px 8px; border-radius: 999px; white-space: nowrap; }
+.status.fact { background: var(--ok-bg); color: var(--ok-ink); }
+.status.plan { background: var(--warn-bg); color: var(--warn-ink); }
+ul.tight { margin: 0; padding-left: 20px; display: grid; gap: 4px; }
+@media (max-width: 520px) { .ans { padding-left: 18px; } .say { font-size: 16px; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+html { scroll-behavior: smooth; }
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <span class="eyebrow">ITEC SEA 2026 · Digital Culture Track · Deck v5</span>
+    <h1>Scanvas pitch prep</h1>
+    <p class="lede">Naskah 12 slide (sekitar 6:30, sisa 30 detik), pertanyaan juri yang mungkin keluar beserta jawabannya, dan ringkasan angka. Naskah dan jawaban dalam bahasa Inggris (bahasa pitch); catatan untuk kalian dalam bahasa Indonesia.</p>
+    <div class="slot">
+      <span class="pill"><b>Slot</b> Sel 6 Okt · 09.53–10.06 WIB</span>
+      <span class="pill"><b>Siap</b> paling lambat 09.38 WIB</span>
+      <span class="pill"><b>Pitch</b> 7 menit · lalu Q&amp;A</span>
+    </div>
+  </header>
+
+  <nav class="sec" aria-label="Sections">
+    <a href="#script">Naskah</a>
+    <a href="#qa">Q&amp;A</a>
+    <a href="#numbers">Angka</a>
+    <a href="#rules">Aturan jawab</a>
+  </nav>
+
+  <section id="script">
+    <div>
+      <span class="eyebrow">Bagian 1</span>
+      <h2>Naskah per slide</h2>
+      <p class="lede">Sekitar 140 kata per menit. Pembagian pembicara hanya usulan: Salsabila (CMO) membawa cerita, pasar, dan bisnis; Haikal (CEO) membawa demo, produk, roadmap, dan ask, supaya juri melihat keduanya bicara.</p>
+    </div>
+    <div class="legend"><span class="who s">S · Salsabila</span><span class="who h">H · Haikal</span><span>Garis ungu = posisi waktu kumulatif dari 7:00.</span></div>
+    <div class="note"><b>Isi dulu:</b> bagian bertanda kuning adalah fakta yang hanya kalian yang tahu. Kalau tidak bisa diverifikasi, hapus kalimatnya; jangan diganti tebakan.</div>
+
+    <article class="slide">
+      <div class="slide-head"><span class="num">1</span><h3>Cover</h3><span class="who s">S</span><span class="time">0:15 · s/d 0:15</span></div>
+      <div class="rail"><i style="width:3.6%"></i></div>
+      <div class="say">
+        <p>Good morning. I'm Salsabila, co-founder and CMO of Scanvas, and this is Haikal, our CEO. Scanvas is where children's creativity comes alive: children turn their paper artwork into interactive characters and learning experiences, right in the browser.</p>
+      </div>
+      <p class="cue">Jabatan sesuai aplikasi ITEC: Haikal CEO (60%), Salsabila CMO (40%). Kalau CEO yang membuka, tukar: "I'm Haikal, co-founder and CEO of Scanvas, and this is Salsabila, our CMO."</p>
+    </article>
+
+    <article class="slide">
+      <div class="slide-head"><span class="num">2</span><h3>Problem</h3><span class="who s">S</span><span class="time">0:35 · s/d 0:50</span></div>
+      <div class="rail"><i style="width:11.9%"></i></div>
+      <div class="say">
+        <p>Children draw, color, and imagine. But once the page is finished, the experience usually ends.</p>
+        <p>Meanwhile, many digital activities give children ready-made characters to watch, swipe, and consume. And topics like animals and nature are often learned through worksheets, or through content made by someone else.</p>
+        <p>So we asked: what if the child's own creation became the starting point of play and learning? We tested that with 30 children at a TPA here in Yogyakarta.</p>
+      </div>
+      <p class="cue">Jangan klaim hasil belajar meningkat; itu belum diukur.</p>
+    </article>
+
+    <article class="slide">
+      <div class="slide-head"><span class="num">3</span><h3>Solution</h3><span class="who s">S</span><span class="time">0:25 · s/d 1:15</span></div>
+      <div class="rail"><i style="width:17.9%"></i></div>
+      <div class="say">
+        <p>Here is how it works. <b>Color:</b> the child colors a printed Scanvas sheet. <b>Scan:</b> a parent or teacher photographs it in the browser. <b>Come alive:</b> the child's own artwork is extracted and animated. <b>Explore and learn:</b> it enters an interactive world with movement, sound, stories, and facts.</p>
+        <p>The child creates first; technology extends what they created. No app to install.</p>
+      </div>
+    </article>
+
+    <article class="slide">
+      <div class="slide-head"><span class="num">4</span><h3>Product demo</h3><span class="who h">H</span><span class="time">0:55 · s/d 2:10</span></div>
+      <div class="rail"><i style="width:31.0%"></i></div>
+      <div class="say">
+        <p><span class="sp h">H</span>This video shows our digital trial, recorded on the live product. Our physical packs use the same animation experience after children photograph their paper artwork.</p>
+        <p><span class="stage">[Klik video · 37 detik · diam, biarkan berjalan]</span></p>
+        <p>That is the child's whale, in their colors, swimming in a shared ocean.</p>
+      </div>
+      <p class="cue">Kalau video tidak jalan dalam 3 detik: buka MP4 cadangan (assets/video/trial_digital_itec.mp4). Kalau tetap gagal, kembali ke slide 3 dan jelaskan empat gambar, lalu tawarkan juri scan QR di slide 12.</p>
+    </article>
+
+    <article class="slide">
+      <div class="slide-head"><span class="num">5</span><h3>Traction</h3><span class="who s">S</span><span class="time">0:30 · s/d 2:40</span></div>
+      <div class="rail"><i style="width:38.1%"></i></div>
+      <div class="say">
+        <p>Our first pilot already changed the product. Thirty children, one TPA, two worlds live.</p>
+        <p>Their feedback gave us five product priorities. Two are shipped: a larger world, and a digital trial before purchase. Three are being built.</p>
+        <p>What we proved is that children can complete the Scanvas experience in a real setting. What we must prove next is paid demand and repeat use. We are pre-revenue.</p>
+      </div>
+      <p class="cue">Ucapkan "pre-revenue" dengan tenang; itu menaikkan kepercayaan.</p>
+    </article>
+
+    <article class="slide">
+      <div class="slide-head"><span class="num">6</span><h3>Market size</h3><span class="who s">S</span><span class="time">0:30 · s/d 3:10</span></div>
+      <div class="rail"><i style="width:45.2%"></i></div>
+      <div class="say">
+        <p>Our total addressable market is 420,886 PAUD and primary schools in Indonesia. Our serviceable market is 62,797 in Central Java and Yogyakarta. Our beachhead is Yogyakarta, with 7,123 units, because that is where we already ran our pilot.</p>
+        <p>Buyers are principals, teachers, and activity coordinators; users are children aged three to ten. Our year-one target is 48 paid sessions.</p>
+      </div>
+      <p class="cue">Angka unit adalah cakupan pasar, bukan permintaan. Kalau ditanya SOM: target realistis tahun pertama adalah 48 sesi berbayar, bukan 7.123 sekolah.</p>
+    </article>
+
+    <article class="slide">
+      <div class="slide-head"><span class="num">7</span><h3>Competition</h3><span class="who h">H</span><span class="time">0:25 · s/d 3:35</span></div>
+      <div class="rail"><i style="width:51.2%"></i></div>
+      <div class="say">
+        <p>This is a proven category. Faber-Castell, Quiver, and WAGZAK work through apps; teamLab works in a venue.</p>
+        <p>Scanvas combines the child's own artwork, browser access with no app, shared worlds, and a reusable engine for new themes. Competitors validate the category. Our question is whether this combination creates paid, repeat use.</p>
+      </div>
+      <p class="cue">Jangan bilang "no competitors" atau "impossible to copy".</p>
+    </article>
+
+    <article class="slide">
+      <div class="slide-head"><span class="num">8</span><h3>Business model</h3><span class="who s">S</span><span class="time">0:30 · s/d 4:05</span></div>
+      <div class="rail"><i style="width:58.3%"></i></div>
+      <div class="say">
+        <p>We start with paid sessions: a managed session for up to 30 children, at a test price of one million rupiah. We reach schools through direct outreach and a demo, and we validate paid booking, delivery cost, and rebooking.</p>
+        <p>Alongside, a family pack at 49,000 rupiah, reached through short videos, the free trial, and WhatsApp orders. Both prices are commercial-testing assumptions.</p>
+      </div>
+    </article>
+
+    <article class="slide">
+      <div class="slide-head"><span class="num">9</span><h3>Team</h3><span class="who h">H</span><span class="who s">S</span><span class="time">0:35 · s/d 4:40</span></div>
+      <div class="rail"><i style="width:66.7%"></i></div>
+      <div class="say">
+        <p><span class="sp h">H</span>I'm Haikal, CEO, with 60 percent. I lead product and company strategy, engineering, and the computer-vision scanning. <span class="fill">Isi satu kalimat pengalaman yang bisa diverifikasi. Kalau tidak ada, hapus.</span></p>
+        <p><span class="sp s">S</span>And I'm Salsabila, CMO, with 40 percent. I lead brand, customer discovery, institutional outreach, and go-to-market. <span class="fill">Isi satu kalimat pengalaman yang bisa diverifikasi. Kalau tidak ada, hapus.</span></p>
+        <p><span class="sp h">H</span>Together we shipped a live product, two worlds, and our first pilot. Next we strengthen institutional sales and repeatable session delivery.</p>
+      </div>
+      <p class="cue">Bobot tim 25% dari penilaian. Satu bukti konkret per founder lebih kuat daripada daftar jabatan.</p>
+    </article>
+
+    <article class="slide">
+      <div class="slide-head"><span class="num">10</span><h3>Roadmap</h3><span class="who h">H</span><span class="time">0:30 · s/d 5:10</span></div>
+      <div class="rail"><i style="width:73.8%"></i></div>
+      <div class="say">
+        <p>Our roadmap has one rule: prove before we expand.</p>
+        <p>Months one to three, prove paid demand: test pricing, measure delivery cost and scan reliability, and begin paid sessions. Months four to six, prove repeat use: pilot Scanvas Studio and a three-lesson creative program, and measure rebooking and repeat purchase. Months seven to twelve, scale what works: 48 paid sessions, 600 packs, four worlds, and a partner-led localization pilot.</p>
+      </div>
+    </article>
+
+    <article class="slide">
+      <div class="slide-head"><span class="num">11</span><h3>Economics and ask</h3><span class="who h">H</span><span class="time">0:40 · s/d 5:50</span></div>
+      <div class="rail"><i style="width:83.3%"></i></div>
+      <div class="say">
+        <p>Our test economics: a pack at 49,000 rupiah costs about 20,000 to deliver, a 59 percent contribution margin. A session at one million costs about 250,000: 75 percent.</p>
+        <p>In our base case, 600 packs and 48 sessions bring 77.4 million rupiah in revenue and 53.4 million in contribution. We need 200 million rupiah for 12 months; almost half is founder time.</p>
+        <p>We don't claim CAC or LTV yet; this period is designed to measure them. The full projection and cash plan are in our appendix.</p>
+      </div>
+      <p class="cue">Semua angka adalah asumsi model founder (Sep 2026). Kalau ditanya kas: dengan Rp200M, kas di bulan 12 tetap positif (Rp68,7M konservatif, Rp95,4M base).</p>
+    </article>
+
+    <article class="slide">
+      <div class="slide-head"><span class="num">12</span><h3>ITEC and Chaoyang</h3><span class="who s">S</span><span class="time">0:40 · s/d 6:30</span></div>
+      <div class="rail"><i style="width:92.9%"></i></div>
+      <div class="say">
+        <p>Through ITEC we want to validate three things. Institutional pilot partners for paid, repeatable sessions. Content and localization partners for local worlds.</p>
+        <p>And a small, partner-led pilot in Chaoyang: one local partner, a Mandarin interface and one adapted theme, a session with 20 to 30 children, then we measure and decide. It is funded from our go-to-market and content budget, and we do not commit to a broader rollout without evidence.</p>
+        <p>Validate locally, adapt with a partner, expand only with evidence. Thank you.</p>
+      </div>
+      <p class="cue">Belum ada mitra di Tiongkok; sebut sebagai rencana pilot. Total sekitar 6:30 pada 140 kata per menit. Kalau latihan melewati 6:45, potong kalimat terakhir di slide 11 dan kalimat tim yang belum diisi.</p>
+    </article>
+  </section>
+
+  <section id="qa">
+    <div>
+      <span class="eyebrow">Bagian 2</span>
+      <h2>Pertanyaan yang mungkin keluar</h2>
+      <p class="lede">Jawaban disusun 20–30 detik: jawab langsung, beri bukti, lalu sebut langkah berikutnya. Label H/S menunjukkan siapa sebaiknya menjawab.</p>
+    </div>
+    <div class="tools">
+      <label for="qsearch" class="eyebrow" style="flex-basis:100%">Cari atau saring</label>
+      <input type="search" id="qsearch" placeholder="Cari kata, misalnya price, China, data" autocomplete="off">
+      <button type="button" class="toggle" id="practice" aria-pressed="false">Mode latihan: sembunyikan jawaban</button>
+    </div>
+    <div class="tools" id="chips" role="group" aria-label="Filter category">
+      <button type="button" class="chip" data-cat="all" aria-pressed="true">Semua</button>
+      <button type="button" class="chip" data-cat="prod" aria-pressed="false">Produk &amp; teknologi</button>
+      <button type="button" class="chip" data-cat="trac" aria-pressed="false">Traction</button>
+      <button type="button" class="chip" data-cat="mkt" aria-pressed="false">Pasar &amp; pelanggan</button>
+      <button type="button" class="chip" data-cat="biz" aria-pressed="false">Bisnis &amp; harga</button>
+      <button type="button" class="chip" data-cat="comp" aria-pressed="false">Kompetisi</button>
+      <button type="button" class="chip" data-cat="team" aria-pressed="false">Tim</button>
+      <button type="button" class="chip" data-cat="fund" aria-pressed="false">Dana &amp; rencana</button>
+      <button type="button" class="chip" data-cat="china" aria-pressed="false">Chaoyang &amp; ITEC</button>
+      <button type="button" class="chip" data-cat="child" aria-pressed="false">Anak &amp; data</button>
+      <button type="button" class="chip" data-cat="risk" aria-pressed="false">Risiko &amp; exit</button>
+    </div>
+    <p class="empty" id="noresult" hidden>Tidak ada pertanyaan yang cocok. Coba kata lain.</p>
+
+    <div class="cat" data-cat="prod">
+      <h3>Produk &amp; teknologi <small>dijawab Haikal</small></h3>
+      <details class="q" open><summary><span class="qtext">How does the scanning actually work? What if the photo is bad?<span class="by">H</span></span></summary><div class="ans">
+        <p class="a">Every sheet has four printed markers. Our backend detects them, corrects the perspective, crops the page, and extracts the drawing, which then becomes the animated character in the browser. If the photo is too dark or cut off, the user simply retakes it. Scan reliability and recovery are exactly what we measure in months one to three.</p>
+        <p class="tip"><b>Kalau didesak soal angka:</b> target internal kami 95% scan berhasil; angka saat ini <span class="fill">isi kalau sudah diukur, kalau belum katakan belum diukur sistematis</span>.</p>
+      </div></details>
+      <details class="q" open><summary><span class="qtext">Is this AI? Is the technology proprietary?<span class="by">H</span></span></summary><div class="ans">
+        <p class="a">It is a computer-vision pipeline: marker detection, perspective correction, and object extraction, connected to an interactive web runtime. We do not claim proprietary AI. What we built is the end-to-end pipeline and content system, so a new theme reuses the same scanning and animation instead of starting from zero.</p>
+        <p class="avoid">Hindari: "proprietary AI", "patented", "impossible to copy".</p>
+      </div></details>
+      <details class="q" open><summary><span class="qtext">Why a browser instead of an app?<span class="by">H</span></span></summary><div class="ans">
+        <p class="a">Schools and parents should not have to install anything to try it. A QR code or a link is enough, on a phone or a laptop. The trade-off is that we do not use device-level AR. For a classroom session, low friction matters more to us.</p>
+      </div></details>
+      <details class="q" open><summary><span class="qtext">Is Scanvas a 3D animation platform?<span class="by">H</span></span></summary><div class="ans">
+        <p class="a">No. Our worlds are animated illustrations in the browser, and the child's drawing becomes the animated character. That keeps it light enough for any phone or school laptop. The value is that the character is the child's own.</p>
+        <p class="tip"><b>Pastikan sesuai produk:</b> kalau ada elemen 3D di dunia Scanvas, sesuaikan jawaban ini.</p>
+      </div></details>
+      <details class="q" open><summary><span class="qtext">There are ocean and vehicle worlds today. Where are the land and air animals?<span class="by">H</span></span></summary><div class="ans">
+        <p class="a">Ocean and Vehicle are live today. More animal worlds, such as land and air, are next: our plan funds going from two to four worlds, and each new world reuses the same scanning and animation pipeline.</p>
+      </div></details>
+      <details class="q" open><summary><span class="qtext">What does "shared world" mean in practice?<span class="by">H</span></span></summary><div class="ans">
+        <p class="a">Every scanned drawing joins the same world. In a session, the whole group's fish swim together in one ocean, so each child finds their own character among their friends'. That shared moment is what we want to test for repeat use.</p>
+      </div></details>
+      <details class="q" open><summary><span class="qtext">How hard is it to add a new world?<span class="by">H</span></span></summary><div class="ans">
+        <p class="a">The scanning, extraction, and animation pipeline is reused. The new work is the content: the printable sheet, the illustrations, movement, sounds, and facts. Our plan budgets 20 million rupiah to go from two to four worlds.</p>
+      </div></details>
+    </div>
+
+    <div class="cat" data-cat="trac">
+      <h3>Traction &amp; validasi</h3>
+      <details class="q" open><summary><span class="qtext">Did the 30 children or the TPA pay?<span class="by">S</span></span></summary><div class="ans">
+        <p class="a">No. The pilot was free, and we are pre-revenue. Its purpose was to see the experience work with real children in a real setting and to learn what to fix. Paid sessions are the first step of our 12-month plan.</p>
+      </div></details>
+      <details class="q" open><summary><span class="qtext">What exactly did you learn from the pilot?<span class="by">S</span></span></summary><div class="ans">
+        <p class="a">Feedback gave us five product priorities. We shipped two: a larger interactive world, and a digital trial so families can try before buying. Three are in development: bulk processing of many drawings for group sessions, a story and learning space, and additional worlds.</p>
+        <p class="tip"><b>Tambahkan satu observasi nyata</b> dari sesi, misalnya apa yang anak lakukan saat melihat karakternya: <span class="fill">isi dari pengalaman kalian</span>.</p>
+      </div></details>
+      <details class="q" open><summary><span class="qtext">Is there any evidence children come back or want to use it again?<span class="by">S</span></span></summary><div class="ans">
+        <p class="a">Not yet. The pilot was a single session, so we did not measure repeat use. That is the biggest open question, and it is exactly what months four to six test: second creation, next-lesson start, and rebooking, measured separately for families and institutions.</p>
+      </div></details>
+      <details class="q" open><summary><span class="qtext">Do you have paying customers, letters of intent, or a waiting list?<span class="by">S</span></span></summary><div class="ans">
+        <p class="a">No paying customers yet. <span class="fill">Kalau ada TPA atau sekolah yang menyatakan minat lanjutan, secara tertulis atau lisan, sebut di sini dengan jujur seberapa kuat minatnya.</span></p>
+      </div></details>
+      <details class="q" open><summary><span class="qtext">How was the pilot run?<span class="by">S</span></span></summary><div class="ans">
+        <p class="a">We ran one session at a TPA in D.I. Yogyakarta with 30 children. <span class="fill">Isi: tanggal, durasi sesi, siapa fasilitatornya, bagaimana TPA direkrut.</span> Children colored printed sheets, we scanned the drawings, and the characters appeared in the ocean world.</p>
+      </div></details>
+    </div>
+
+    <div class="cat" data-cat="mkt">
+      <h3>Pasar &amp; pelanggan</h3>
+      <details class="q" open><summary><span class="qtext">Why start with institutions instead of parents?<span class="by">S</span></span></summary><div class="ans">
+        <p class="a">One buying decision reaches up to 30 children, an adult facilitator makes scanning reliable, and that is the setting where we already ran our pilot. Families stay as a second path through packs and the free trial.</p>
+      </div></details>
+      <details class="q" open><summary><span class="qtext">Is 7,123 schools your market? What is your realistic share?<span class="by">S</span></span></summary><div class="ans">
+        <p class="a">No. 420,886 is our total addressable market, 62,797 in Central Java and Yogyakarta is serviceable, and Yogyakarta with 7,123 units is our beachhead because we already piloted there. These counts describe coverage, not demand. Our realistic year-one target is 48 paid sessions, a transaction target, not 48 unique institutions.</p>
+      </div></details>
+      <details class="q" open><summary><span class="qtext">Can a PAUD or TPA afford one million rupiah?<span class="by">S</span></span></summary><div class="ans">
+        <p class="a">That is exactly what we are testing. For 30 children it works out to about 33,000 rupiah per child. If one million is too high for some institutions, our model also allows per-participant pricing or smaller groups. We would rather learn the right price from real bookings than assume it.</p>
+      </div></details>
+      <details class="q" open><summary><span class="qtext">Can public schools pay for this? Who pays, the school or the parents?<span class="by">S</span></span></summary><div class="ans">
+        <p class="a">That is part of what we test. It can be the school's activity budget, or a small per-child activity fee collected by the school, about 33,000 rupiah per child at our test price. We will learn which works in our first paid sessions and adjust the format for public schools if needed.</p>
+        <p class="tip"><b>Cek dulu sebelum menyebutnya:</b> apakah dana sekolah negeri (misalnya BOS) boleh dipakai untuk kegiatan seperti ini: <span class="fill">isi hasil cek</span>.</p>
+      </div></details>
+    </div>
+
+    <div class="cat" data-cat="biz">
+      <h3>Bisnis &amp; harga</h3>
+      <details class="q" open><summary><span class="qtext">What are your unit economics?<span class="by">S</span></span></summary><div class="ans">
+        <p class="a">In our planning model, a session at one million rupiah has about 250,000 in direct cost, so roughly 75% contribution. A family pack at 49,000 costs about 10,000 to print and pack plus a 10,000 delivery subsidy, so about 59% contribution. These are assumptions until we have real orders.</p>
+      </div></details>
+      <details class="q" open><summary><span class="qtext">What are your CAC and LTV?<span class="by">S</span></span></summary><div class="ans">
+        <p class="a">We have not measured them yet, because we have no paid customers. In months one to six we will track acquisition cost per paid session, meaning outreach and demo cost, and the rebooking rate, which is the core of lifetime value for institutions.</p>
+        <p class="avoid">Jangan menyebut angka CAC atau LTV yang belum ada datanya.</p>
+      </div></details>
+      <details class="q" open><summary><span class="qtext">Why will people pay when the trial is free?<span class="by">S</span></span></summary><div class="ans">
+        <p class="a">The free trial shows the magic with one digital drawing. What people pay for is the full experience: physical sheets the child colors by hand, more characters and worlds, and, for schools, a facilitated session for the whole group. Whether that is enough is what the pricing test answers.</p>
+      </div></details>
+      <details class="q" open><summary><span class="qtext">Will you add a subscription?<span class="by">S</span></span></summary><div class="ans">
+        <p class="a">Not now. A subscription only makes sense after we see repeat use. Today we focus on two offers: paid sessions first, family packs alongside.</p>
+      </div></details>
+    </div>
+
+    <div class="cat" data-cat="comp">
+      <h3>Kompetisi <small>dijawab Haikal</small></h3>
+      <details class="q" open><summary><span class="qtext">Quiver has over 26 million downloads. Why would you win?<span class="by">H</span></span></summary><div class="ans">
+        <p class="a">We do not need to beat Quiver globally. Quiver requires an app. Scanvas runs in the browser, uses the child's artwork in shared worlds, and is built for group sessions in Indonesian institutions, a channel global apps do not serve directly. Their downloads prove the demand for the category.</p>
+      </div></details>
+      <details class="q" open><summary><span class="qtext">What if Faber-Castell does this in Indonesia?<span class="by">H</span></span></summary><div class="ans">
+        <p class="a">Faber-Castell ARt Alive already exists and needs an app with their kit. A large brand validates the category. Our focus is sessions, browser access, and shared worlds. A brand like that could also become a partner for distribution or content rather than only a competitor.</p>
+      </div></details>
+      <details class="q" open><summary><span class="qtext">What stops someone from copying you?<span class="by">H</span></span></summary><div class="ans">
+        <p class="a">Honestly, the individual technical pieces can be copied. What takes time is a growing content library, relationships with institutions, and the learning from running sessions. Our job in the next 12 months is to build those faster than anyone else in this channel.</p>
+      </div></details>
+    </div>
+
+    <div class="cat" data-cat="team">
+      <h3>Tim <small>bobot 25%</small></h3>
+      <details class="q" open><summary><span class="qtext">Who is the CEO, and what is the equity split?<span class="by">H</span></span></summary><div class="ans">
+        <p class="a">I am the CEO, with 60%; Salsabila is CMO, with 40%, exactly as in our application. An earlier version of our deck carried titles from an older competition deck; that is corrected now. In practice I lead product and technology, and Salsabila leads customers, partnerships, and go-to-market.</p>
+        <p class="tip"><b>Ini pertanyaan dari hasil penilaian Council.</b> Jawab singkat dan tenang; jangan berdebat soal versi lama.</p>
+      </div></details>
+      <details class="q" open><summary><span class="qtext">Why are you the right team?<span class="by">S + H</span></span></summary><div class="ans">
+        <p class="a">We cover both sides: Salsabila on customers, partnerships, and sales; Haikal on product and computer vision. With just the two of us we shipped a live product, two worlds, and a real pilot. <span class="fill">Tambahkan satu bukti konkret per orang yang bisa diverifikasi.</span></p>
+      </div></details>
+      <details class="q" open><summary><span class="qtext">Are you both full-time?<span class="by">S</span></span></summary><div class="ans">
+        <p class="a"><span class="fill">Jawab jujur sesuai kondisi sekarang.</span> Founder compensation in our plan exists so that both of us can work on Scanvas full time for the 12-month validation.</p>
+      </div></details>
+      <details class="q" open><summary><span class="qtext">What is your biggest gap, and how will you close it?<span class="by">S</span></span></summary><div class="ans">
+        <p class="a">Institutional sales at scale and repeatable session delivery. We will learn it through the first 48 paid sessions, document a standard session format, and later train facilitators. Mentors and partners through ITEC would shorten that learning.</p>
+      </div></details>
+      <details class="q" open><summary><span class="qtext">Do you have a company entity?<span class="by">S</span></span></summary><div class="ans">
+        <p class="a"><span class="fill">Isi status badan hukum: sudah berbadan hukum (sebutkan bentuknya) atau dalam proses.</span></p>
+      </div></details>
+    </div>
+
+    <div class="cat" data-cat="fund">
+      <h3>Dana &amp; rencana</h3>
+      <details class="q" open><summary><span class="qtext">Why 200 million when year-one revenue is only about 77 million?<span class="by">S</span></span></summary><div class="ans">
+        <p class="a">Year one is about validation, not profit. The money builds the repeatable system: founder runway, reliable scanning, Studio, school acquisition, production, and new worlds. Each unit already has positive contribution in our model, so the goal is to prove repeat use and then scale on real economics.</p>
+        <p class="tip"><b>Kalau ditanya burn:</b> di model dasar, biaya operasional 12 bulan sekitar Rp158 juta dan hasil bersih sekitar minus Rp105 juta. Sebut sebagai asumsi.</p>
+      </div></details>
+      <details class="q" open><summary><span class="qtext">What is your cash plan and runway?<span class="by">H</span></span></summary><div class="ans">
+        <p class="a">Operating expenses are about 158 million rupiah a year, roughly 13.2 million a month. With 200 million in capital, our model keeps cash positive at month 12: about 68.7 million in the conservative case and 95.4 million in the base case. That remainder covers inventory, contingency, and runway into year two.</p>
+        <p class="tip"><b>Semua angka dari model founder (Sep 2026)</b> dan bersifat asumsi.</p>
+      </div></details>
+      <details class="q" open><summary><span class="qtext">Do you have an 18-month projection?<span class="by">H</span></span></summary><div class="ans">
+        <p class="a">We project 12 months today. We will re-forecast months 13 to 18 from real numbers, conversion, rebooking, and delivery cost, after the first six months of paid sessions, rather than extend assumptions further.</p>
+      </div></details>
+      <details class="q" open><summary><span class="qtext">What if you raise less than 200 million?<span class="by">S</span></span></summary><div class="ans">
+        <p class="a">We would protect the core test: paid sessions, scan reliability, and the rebooking measurement. Expanding from two to four worlds and production volume would slow down. The validation question stays the same; it just takes longer.</p>
+      </div></details>
+      <details class="q" open><summary><span class="qtext">Are you raising equity? At what valuation?<span class="by">S</span></span></summary><div class="ans">
+        <p class="a"><span class="fill">Isi posisi kalian: misalnya terbuka untuk hibah, kompetisi, atau pre-seed; valuasi belum ditetapkan.</span> Jangan menyebut angka valuasi yang belum dihitung.</p>
+      </div></details>
+      <details class="q" open><summary><span class="qtext">How will we know you are on track?<span class="by">S</span></span></summary><div class="ans">
+        <p class="a">We report against four numbers: paid sessions toward 48, family packs toward 600, scan success, and rebooking and repurchase, measured separately. If the first paid sessions do not convert, we adjust price or format before expanding.</p>
+      </div></details>
+    </div>
+
+    <div class="cat" data-cat="china">
+      <h3>Chaoyang &amp; ITEC <small>bobot 15%</small></h3>
+      <details class="q" open><summary><span class="qtext">Why Chaoyang? What is your concrete plan there?<span class="by">S</span></span></summary><div class="ans">
+        <p class="a">A small, partner-led pilot, not a commitment yet. Step one: one local partner, an institution or activity partner. Step two: localize, a Mandarin interface and one adapted Scanvas theme. Step three: a proposed session with 20 to 30 children. Step four: measure completion, scan success, partner feedback, willingness to repeat or pay, and localization effort, then decide. No permanent China operation.</p>
+        <p class="tip"><b>Resources:</b> founder lead, a local partner or translator, localized print templates, adapted digital content. Jangan sebut ada mitra atau komitmen kalau belum ada.</p>
+      </div></details>
+      <details class="q" open><summary><span class="qtext">How will you fund localization and a partner-led pilot in Chaoyang?<span class="by">S</span></span></summary><div class="ans">
+        <p class="a">Initial localization is a validation experiment funded from our go-to-market and content budget, kept to one partner and one theme. We do not commit to a broader China rollout until the pilot shows demand, repeat intent, and workable localization economics.</p>
+        <p class="tip"><b>Kalau ditanya angka:</b> <span class="fill">isi perkiraan biaya lokalisasi satu tema kalau sudah dihitung; kalau belum, katakan belum dihitung.</span></p>
+      </div></details>
+      <details class="q" open><summary><span class="qtext">Would you set up or relocate in Chaoyang?<span class="by">S</span></span></summary><div class="ans">
+        <p class="a"><span class="fill">Jawab sesuai kesiapan kalian.</span> Our honest approach: a partner-led pilot first, and a landing decision based on what that pilot shows.</p>
+      </div></details>
+      <details class="q" open><summary><span class="qtext">Why does Scanvas fit the Digital Culture track?<span class="by">S</span></span></summary><div class="ans">
+        <p class="a">Children do not only consume digital content here; they create the characters themselves. The same engine can carry local cultural themes, languages, and stories, so each region can have worlds that feel like its own.</p>
+      </div></details>
+      <details class="q" open><summary><span class="qtext">What do you want from ITEC specifically?<span class="by">S</span></span></summary><div class="ans">
+        <p class="a">Three things: institutional pilot partners to test paid, repeatable sessions; content and localization partners; and an introduction to a possible Chaoyang pilot partner. Plus commercialization guidance on pricing and market entry.</p>
+      </div></details>
+    </div>
+
+    <div class="cat" data-cat="child">
+      <h3>Anak, data &amp; pendidikan</h3>
+      <details class="q" open><summary><span class="qtext">What data do you collect about children?<span class="by">H</span></span></summary><div class="ans">
+        <p class="a">As little as possible. By default we do not collect the child's name, parent identity, email, phone, or precise location, and the artwork itself is not used as an analytics payload. The drawing is processed to create the character in the world.</p>
+        <p class="tip"><b>Siapkan jawaban:</b> berapa lama gambar disimpan dan siapa yang bisa melihatnya: <span class="fill">isi kebijakan retensi yang sebenarnya</span>.</p>
+      </div></details>
+      <details class="q" open><summary><span class="qtext">Do children actually learn anything?<span class="by">S</span></span></summary><div class="ans">
+        <p class="a">We do not claim learning outcomes yet, because we have not measured them. The design adds facts and sounds to each character, and our three-lesson creative program is where we will test progression properly.</p>
+        <p class="avoid">Jangan klaim "meningkatkan kreativitas" atau "meningkatkan hasil belajar" tanpa data.</p>
+      </div></details>
+      <details class="q" open><summary><span class="qtext">Isn't this just more screen time for young children?<span class="by">S</span></span></summary><div class="ans">
+        <p class="a">The experience starts away from the screen, with crayons and paper. The screen moment is short, adult-supported, and centered on something the child made. We see it as a way to connect physical creativity with digital play, not to replace it.</p>
+      </div></details>
+      <details class="q" open><summary><span class="qtext">Do you have parental consent for the pilot photos?<span class="by">S</span></span></summary><div class="ans">
+        <p class="a"><span class="fill">Isi: izin dari TPA atau orang tua untuk foto anak.</span> Kalau belum ada, pertimbangkan mengganti foto yang menampakkan wajah anak sebelum pitch.</p>
+      </div></details>
+    </div>
+
+    <div class="cat" data-cat="risk">
+      <h3>Risiko &amp; exit</h3>
+      <details class="q" open><summary><span class="qtext">What is your biggest risk?<span class="by">S</span></span></summary><div class="ans">
+        <p class="a">That people love the magic moment but do not pay or come back. That is why our next 12 months are built around testing paid use and repeat use, with a gate before each expansion.</p>
+      </div></details>
+      <details class="q" open><summary><span class="qtext">What if scanning fails in a classroom with poor light or many children?<span class="by">H</span></span></summary><div class="ans">
+        <p class="a">In a session, an adult facilitator takes the photos and can retake them. Bulk processing for many drawings at once is one of the three items in development from our pilot feedback, specifically for group sessions.</p>
+      </div></details>
+      <details class="q" open><summary><span class="qtext">What is your exit strategy?<span class="by">S</span></span></summary><div class="ans">
+        <p class="a">It is indicative at this stage. The most realistic path is a strategic acquisition by an edtech platform, a children's publisher, a stationery or toy brand, or a media and IP company that wants a ready engine, a content library, and school distribution. First we have to build that value. Details are in our appendix.</p>
+        <p class="avoid">Jangan menyebut sedang bicara dengan calon pembeli; belum ada.</p>
+      </div></details>
+      <details class="q" open><summary><span class="qtext">What happens if the founders cannot raise any money?<span class="by">S</span></span></summary><div class="ans">
+        <p class="a">We keep validating at a smaller pace: run the first paid sessions, keep the free trial live, and use revenue from sessions and packs to fund the next step. The plan is staged so that each step stands on its own.</p>
+      </div></details>
+    </div>
+  </section>
+
+  <section id="numbers">
+    <div>
+      <span class="eyebrow">Bagian 3</span>
+      <h2>Angka yang harus hafal</h2>
+      <p class="lede">Hijau = fakta saat ini. Kuning = rencana atau asumsi; selalu sebut sebagai asumsi.</p>
+    </div>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Angka</th><th>Artinya</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td class="v">60 · 40</td><td>Saham: Haikal Hilmi (CEO) 60% · Salsabila Khoirunnisa (CMO) 40%, sesuai aplikasi ITEC</td><td><span class="status fact">Fakta</span></td></tr>
+        <tr><td class="v">30</td><td>Anak di pilot pertama, satu TPA di D.I. Yogyakarta (gratis)</td><td><span class="status fact">Fakta</span></td></tr>
+        <tr><td class="v">2</td><td>Dunia interaktif live: Ocean dan Vehicle</td><td><span class="status fact">Fakta</span></td></tr>
+        <tr><td class="v">5</td><td>Prioritas produk dari feedback: 2 shipped, 3 in development</td><td><span class="status fact">Fakta</span></td></tr>
+        <tr><td class="v">Rp0</td><td>Pendapatan saat ini (pre-revenue)</td><td><span class="status fact">Fakta</span></td></tr>
+        <tr><td class="v">7,123</td><td>Unit PAUD + SD di D.I. Yogyakarta (Kemendikdasmen, Sep 2026)</td><td><span class="status fact">Data publik</span></td></tr>
+        <tr><td class="v">420,886</td><td>Unit PAUD + SD nasional; Jateng + DIY 62,797</td><td><span class="status fact">Data publik</span></td></tr>
+        <tr><td class="v">≈35.3M</td><td>Anak usia 3–10 di Indonesia, estimasi dari data BPS 2022</td><td><span class="status plan">Estimasi</span></td></tr>
+        <tr><td class="v">Rp1,000,000</td><td>Harga uji sesi, maks. 30 anak (≈Rp33K per anak); biaya langsung ≈Rp250K</td><td><span class="status plan">Asumsi</span></td></tr>
+        <tr><td class="v">Rp49,000</td><td>Harga uji pack keluarga; cetak Rp10K + subsidi kirim Rp10K</td><td><span class="status plan">Asumsi</span></td></tr>
+        <tr><td class="v">48 · 600</td><td>Target 12 bulan: sesi berbayar (transaksi) · pack keluarga</td><td><span class="status plan">Target</span></td></tr>
+        <tr><td class="v">Rp77.4M</td><td>Skenario pendapatan: 48 × Rp1M + 600 × Rp49K, sebelum biaya</td><td><span class="status plan">Ilustrasi</span></td></tr>
+        <tr><td class="v">Rp200M</td><td>Kebutuhan dana 12 bulan: 96 tim · 30 GTM · 24 produk · 20 produksi · 20 konten · 10 legal</td><td><span class="status plan">Rencana</span></td></tr>
+        <tr><td class="v">Rp158M</td><td>Biaya operasional 12 bulan di model dasar; hasil bersih ≈ −Rp105M</td><td><span class="status plan">Asumsi</span></td></tr>
+        <tr><td class="v">Rp13.2M</td><td>Biaya operasional per bulan (Rp158M / 12)</td><td><span class="status plan">Asumsi</span></td></tr>
+        <tr><td class="v">Rp68.7M · Rp95.4M</td><td>Kas di bulan 12 dengan Rp200M: konservatif · base</td><td><span class="status plan">Asumsi</span></td></tr>
+        <tr><td class="v">Rp24.0M · Rp53.4M</td><td>Biaya langsung · kontribusi kotor (69%), skenario base</td><td><span class="status plan">Asumsi</span></td></tr>
+        <tr><td class="v">≥95%</td><td>Target keberhasilan scan</td><td><span class="status plan">Target</span></td></tr>
+      </tbody>
+    </table></div>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Pesaing</th><th>Yang sudah kami cek (Sep 2026, situs resmi)</th></tr></thead>
+      <tbody>
+        <tr><td class="v">Faber-Castell ARt Alive</td><td>Perlu aplikasi; kit sekitar Rp105,900</td></tr>
+        <tr><td class="v">Quiver</td><td>Perlu aplikasi; 26 juta+ unduhan; ada langganan edukasi</td></tr>
+        <tr><td class="v">WAGZAK JUMP</td><td>Perlu aplikasi; 100+ pelajaran, 30 bahasa, US$9.99/tahun</td></tr>
+        <tr><td class="v">teamLab Sketch Aquarium</td><td>Instalasi di venue; ada dunia bersama, tapi tidak bisa di rumah</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section id="rules">
+    <div>
+      <span class="eyebrow">Bagian 4</span>
+      <h2>Aturan jawab di Q&amp;A</h2>
+    </div>
+    <ul class="tight">
+      <li><b>Jawab dulu, baru jelaskan.</b> Kalimat pertama langsung menjawab: "No", "Not yet", "Rp1 million".</li>
+      <li><b>Kalau belum tahu:</b> "We don't know yet. Here is how we will find out in the next three months." Juri lebih menghargai ini daripada tebakan.</li>
+      <li><b>Bagi peran:</b> Haikal menjawab teknologi, data, dan pesaing; Salsabila menjawab pasar, harga, dana, tim, dan Chaoyang. Yang tidak menjawab boleh menambah satu kalimat, tidak lebih.</li>
+      <li><b>Jaga label:</b> harga, target, dan Rp77,4 juta selalu disebut "assumption" atau "target".</li>
+      <li><b>Jangan pernah klaim:</b> pelanggan berbayar, recurring revenue, harga sudah tervalidasi, AI proprietary, mitra di Tiongkok, platform kursus atau LMS, atau peningkatan hasil belajar.</li>
+      <li><b>Kelemahan dihadapi langsung</b>, sesuai arahan mentoring: sebut kelemahannya, lalu sebut tes yang menjawabnya.</li>
+    </ul>
+  </section>
+</div>
+
+<script>
+(function () {
+  var cats = Array.prototype.slice.call(document.querySelectorAll('.cat'));
+  var items = Array.prototype.slice.call(document.querySelectorAll('details.q'));
+  var chips = Array.prototype.slice.call(document.querySelectorAll('#chips .chip'));
+  var search = document.getElementById('qsearch');
+  var practice = document.getElementById('practice');
+  var none = document.getElementById('noresult');
+  var active = 'all';
+
+  function apply() {
+    var term = (search.value || '').trim().toLowerCase();
+    var shown = 0;
+    cats.forEach(function (cat) {
+      var catOk = active === 'all' || cat.dataset.cat === active;
+      var any = false;
+      cat.querySelectorAll('details.q').forEach(function (d) {
+        var ok = catOk && (!term || d.textContent.toLowerCase().indexOf(term) !== -1);
+        d.hidden = !ok;
+        if (ok) { any = true; shown++; }
+      });
+      cat.hidden = !any;
+    });
+    none.hidden = shown > 0;
+  }
+
+  chips.forEach(function (c) {
+    c.addEventListener('click', function () {
+      active = c.dataset.cat;
+      chips.forEach(function (x) { x.setAttribute('aria-pressed', x === c ? 'true' : 'false'); });
+      apply();
+    });
+  });
+  search.addEventListener('input', apply);
+
+  practice.addEventListener('click', function () {
+    var on = practice.getAttribute('aria-pressed') !== 'true';
+    practice.setAttribute('aria-pressed', on ? 'true' : 'false');
+    practice.textContent = on ? 'Mode latihan aktif: klik pertanyaan untuk melihat jawaban' : 'Mode latihan: sembunyikan jawaban';
+    items.forEach(function (d) { d.open = !on; });
+  });
+})();
+</script>

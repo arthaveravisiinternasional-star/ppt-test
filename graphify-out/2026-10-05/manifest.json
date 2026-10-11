@@ -1,0 +1,236 @@
+{
+  "build_deck.py": {
+    "mtime": 1789118657.9223235,
+    "seen": 1789118894.2631493,
+    "ast_hash": "a61dbfd2916baa9b626cd136f5169b66",
+    "semantic_hash": ""
+  },
+  "deck/__init__.py": {
+    "mtime": 1789111861.033497,
+    "seen": 1789112295.7286382,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "deck/content.py": {
+    "mtime": 1789118725.8511112,
+    "seen": 1789118894.263162,
+    "ast_hash": "3d8d4d96c32827009cf28c1f1d25e002",
+    "semantic_hash": ""
+  },
+  "deck/helpers.py": {
+    "mtime": 1791132180.0067153,
+    "seen": 1791132317.6891315,
+    "ast_hash": "ccb79f9d09b97302eaeaabdf4ad49461",
+    "semantic_hash": ""
+  },
+  "deck/slides.py": {
+    "mtime": 1790497633.296625,
+    "seen": 1790498752.8758528,
+    "ast_hash": "3c9243f03b0e4202d48626b9a3b80d1f",
+    "semantic_hash": ""
+  },
+  "deck/theme.py": {
+    "mtime": 1791132180.0067153,
+    "seen": 1791132317.6891403,
+    "ast_hash": "f0701cc87643e5890182147e26917f8e",
+    "semantic_hash": ""
+  },
+  "tools/capture_screens.py": {
+    "mtime": 1789115233.2733119,
+    "seen": 1789115283.9334428,
+    "ast_hash": "69fb1e73fb9d205290b336b022a96239",
+    "semantic_hash": ""
+  },
+  "tools/make_mockups.py": {
+    "mtime": 1789364448.725999,
+    "seen": 1789364615.459914,
+    "ast_hash": "5044b87fe93df6e0bfe03cb9f341caeb",
+    "semantic_hash": ""
+  },
+  "tools/render.ps1": {
+    "mtime": 1791132180.0077183,
+    "seen": 1791132317.6891465,
+    "ast_hash": "7dbdbf7c9330b9777ac292011a4e1488",
+    "semantic_hash": ""
+  },
+  "tools/render_icons.py": {
+    "mtime": 1789112060.3048108,
+    "seen": 1789112295.728647,
+    "ast_hash": "c4602c4412fc82de8e4ae9f0d8296b69",
+    "semantic_hash": "c4602c4412fc82de8e4ae9f0d8296b69"
+  },
+  "README.md": {
+    "mtime": 1791209563.94233,
+    "seen": 1791209569.4469116,
+    "ast_hash": "ada7e99ce0f89add50322c13f2d63faf",
+    "semantic_hash": ""
+  },
+  "tools/lesson_mockup.html": {
+    "mtime": 1789112033.8830955,
+    "seen": 1789112295.728649,
+    "ast_hash": "6ff1213bc3808f1e4ebe01bd4d1e9e9e",
+    "semantic_hash": "6ff1213bc3808f1e4ebe01bd4d1e9e9e"
+  },
+  "deck/recolor.py": {
+    "mtime": 1789114193.966025,
+    "seen": 1789115283.9334393,
+    "ast_hash": "c1f2b0da70f79019b8c01137996fdb0e",
+    "semantic_hash": ""
+  },
+  "CLAUDE.md": {
+    "mtime": 1791176341.595703,
+    "seen": 1791176344.9969475,
+    "ast_hash": "36f120ca75e4fc06cb133eee8a76c760",
+    "semantic_hash": ""
+  },
+  "build_deck_itec.py": {
+    "mtime": 1789363701.9670403,
+    "seen": 1789364038.419552,
+    "ast_hash": "1ddbc18ecff7983ce8887de2eea2952c",
+    "semantic_hash": ""
+  },
+  "deck/content_itec.py": {
+    "mtime": 1789363694.5808575,
+    "seen": 1789364038.419559,
+    "ast_hash": "ac2e014d7ccbe8729e1a67c35868b313",
+    "semantic_hash": ""
+  },
+  "build_deck_antler.py": {
+    "mtime": 1789382327.622606,
+    "seen": 1789382587.2214062,
+    "ast_hash": "5dd3eb3f8849b3a9fe48ab8ff2b36850",
+    "semantic_hash": ""
+  },
+  "deck/content_antler.py": {
+    "mtime": 1789383731.6024294,
+    "seen": 1789383800.6470692,
+    "ast_hash": "7b2c4d454a9ee0db3736310b8eea579d",
+    "semantic_hash": ""
+  },
+  "deck/slides_antler.py": {
+    "mtime": 1789383071.6764202,
+    "seen": 1789383321.6016371,
+    "ast_hash": "ff289a75ba01d8545e8c84e47c9c2e5a",
+    "semantic_hash": ""
+  },
+  "build_deck_dsc.py": {
+    "mtime": 1789446832.6346436,
+    "seen": 1789446996.2332644,
+    "ast_hash": "92714dfd71a7840185ed0cd19a72ffe8",
+    "semantic_hash": ""
+  },
+  "deck/content_dsc.py": {
+    "mtime": 1789446953.8385537,
+    "seen": 1789446996.2332728,
+    "ast_hash": "0f816991c149fe916a827ac35bc78e60",
+    "semantic_hash": ""
+  },
+  "deck/slides_dsc.py": {
+    "mtime": 1790498543.5662925,
+    "seen": 1790498752.8758554,
+    "ast_hash": "637ece4113b06edb3ad0976489568e33",
+    "semantic_hash": ""
+  },
+  "build_deck_itec2.py": {
+    "mtime": 1790497938.4675007,
+    "seen": 1790498752.8758397,
+    "ast_hash": "bb476afbffd5a502cf71710f732ff8f1",
+    "semantic_hash": ""
+  },
+  "deck/content_itec2.py": {
+    "mtime": 1790497938.4705062,
+    "seen": 1790498752.8758492,
+    "ast_hash": "f529d14c19a83cfc22f10af1178ff9b7",
+    "semantic_hash": ""
+  },
+  "deck/slides_itec2.py": {
+    "mtime": 1790497938.4715064,
+    "seen": 1790498752.8758564,
+    "ast_hash": "77be85090d4d0a058fa09b60ae86b214",
+    "semantic_hash": ""
+  },
+  "build_deck_itec3.py": {
+    "mtime": 1790679396.3992243,
+    "seen": 1790679609.483891,
+    "ast_hash": "8b3033d0af402d48e52b223c286e7d7d",
+    "semantic_hash": ""
+  },
+  "deck/content_itec3.py": {
+    "mtime": 1790752811.1089818,
+    "seen": 1790752997.67519,
+    "ast_hash": "a59d7ef606b736d1fba186a9ae1cf46e",
+    "semantic_hash": ""
+  },
+  "deck/slides_itec3.py": {
+    "mtime": 1791131369.071324,
+    "seen": 1791131461.042309,
+    "ast_hash": "4456d37fbaaee72632ef57b0fb040eda",
+    "semantic_hash": ""
+  },
+  "tools/make_pilot_art.py": {
+    "mtime": 1790752928.4238615,
+    "seen": 1790752997.675211,
+    "ast_hash": "c682cea78a36f923345aa2ca77326d12",
+    "semantic_hash": ""
+  },
+  "build_deck_itec4.py": {
+    "mtime": 1791175497.0487537,
+    "seen": 1791175579.715184,
+    "ast_hash": "3cdca785d226a0b7b273bf43fad0e6c0",
+    "semantic_hash": ""
+  },
+  "deck/content_itec4.py": {
+    "mtime": 1791209396.575934,
+    "seen": 1791209569.446884,
+    "ast_hash": "36a246f44286c7b03aef8ee3ce65f7e9",
+    "semantic_hash": ""
+  },
+  "deck/slides_itec4.py": {
+    "mtime": 1791176282.1165044,
+    "seen": 1791176344.9969282,
+    "ast_hash": "1a9412db2534432538d274f3cb27f271",
+    "semantic_hash": ""
+  },
+  "tools/make_fonts.py": {
+    "mtime": 1791132129.3285527,
+    "seen": 1791132317.6891427,
+    "ast_hash": "bd3eb548af13fc8fb947736f23f77187",
+    "semantic_hash": ""
+  },
+  "build_deck_itec5.py": {
+    "mtime": 1791176203.5684302,
+    "seen": 1791176344.9968853,
+    "ast_hash": "5f933df4e707fdded331f9a3e8b2cace",
+    "semantic_hash": ""
+  },
+  "deck/content_itec5.py": {
+    "mtime": 1791209396.574934,
+    "seen": 1791209569.4468863,
+    "ast_hash": "4fb767926b0dc0c5e3a8c2dd90d4960e",
+    "semantic_hash": ""
+  },
+  "deck/slides_itec5.py": {
+    "mtime": 1791209441.4339767,
+    "seen": 1791209569.4469004,
+    "ast_hash": "8c14fa6809335de91de050f5aaad512b",
+    "semantic_hash": ""
+  },
+  ".impeccable/hook.cache.json": {
+    "mtime": 1791182940.5571556,
+    "seen": 1791184975.6153746,
+    "ast_hash": "0032df5737c618fe8b0996b4fb81bd60",
+    "semantic_hash": ""
+  },
+  "tools/make_pitch_prep.py": {
+    "mtime": 1791184920.1368325,
+    "seen": 1791184975.6154468,
+    "ast_hash": "8e341738c916d808111da6250e0a698b",
+    "semantic_hash": ""
+  },
+  "docs/pitch_prep_itec5.html": {
+    "mtime": 1791209479.221363,
+    "seen": 1791209569.4469125,
+    "ast_hash": "4d17d4e854a429c9fb97ba98aefd878b",
+    "semantic_hash": ""
+  }
+}

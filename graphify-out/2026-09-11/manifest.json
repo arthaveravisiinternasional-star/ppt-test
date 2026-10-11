@@ -1,0 +1,86 @@
+{
+  "build_deck.py": {
+    "mtime": 1789113377.1798487,
+    "seen": 1789113685.6430008,
+    "ast_hash": "4fb3c41fb47d98aabe568c1c87672bb1",
+    "semantic_hash": ""
+  },
+  "deck/__init__.py": {
+    "mtime": 1789111861.033497,
+    "seen": 1789112295.7286382,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "deck/content.py": {
+    "mtime": 1789117261.009663,
+    "seen": 1789117317.9888873,
+    "ast_hash": "a41d186c101fc748c24ecd60dd95e559",
+    "semantic_hash": ""
+  },
+  "deck/helpers.py": {
+    "mtime": 1789113613.1315367,
+    "seen": 1789113685.6430113,
+    "ast_hash": "899f18c44febcd45624d06b30e7bdc5b",
+    "semantic_hash": ""
+  },
+  "deck/slides.py": {
+    "mtime": 1789117211.1976748,
+    "seen": 1789117317.9888918,
+    "ast_hash": "7ba4e2c5b4cf7c969e61c64884738945",
+    "semantic_hash": ""
+  },
+  "deck/theme.py": {
+    "mtime": 1789114197.3792975,
+    "seen": 1789115283.9334419,
+    "ast_hash": "466d8621800d53512b0b98beb34febc8",
+    "semantic_hash": ""
+  },
+  "tools/capture_screens.py": {
+    "mtime": 1789115233.2733119,
+    "seen": 1789115283.9334428,
+    "ast_hash": "69fb1e73fb9d205290b336b022a96239",
+    "semantic_hash": ""
+  },
+  "tools/make_mockups.py": {
+    "mtime": 1789116232.850743,
+    "seen": 1789116290.1626027,
+    "ast_hash": "926183cd1074eaeabc84628a91fae22b",
+    "semantic_hash": ""
+  },
+  "tools/render.ps1": {
+    "mtime": 1789113369.232028,
+    "seen": 1789113685.6430192,
+    "ast_hash": "fe406a04e8a6421011ab43ebb737ca06",
+    "semantic_hash": ""
+  },
+  "tools/render_icons.py": {
+    "mtime": 1789112060.3048108,
+    "seen": 1789112295.728647,
+    "ast_hash": "c4602c4412fc82de8e4ae9f0d8296b69",
+    "semantic_hash": "c4602c4412fc82de8e4ae9f0d8296b69"
+  },
+  "README.md": {
+    "mtime": 1789117316.1850023,
+    "seen": 1789117317.988899,
+    "ast_hash": "7b27d8d55317c638dff86e2379050315",
+    "semantic_hash": ""
+  },
+  "tools/lesson_mockup.html": {
+    "mtime": 1789112033.8830955,
+    "seen": 1789112295.728649,
+    "ast_hash": "6ff1213bc3808f1e4ebe01bd4d1e9e9e",
+    "semantic_hash": "6ff1213bc3808f1e4ebe01bd4d1e9e9e"
+  },
+  "deck/recolor.py": {
+    "mtime": 1789114193.966025,
+    "seen": 1789115283.9334393,
+    "ast_hash": "c1f2b0da70f79019b8c01137996fdb0e",
+    "semantic_hash": ""
+  },
+  "CLAUDE.md": {
+    "mtime": 1789112305.518728,
+    "seen": 1789112875.7731407,
+    "ast_hash": "9d77b95e1a1f75db785cb37c0957a532",
+    "semantic_hash": ""
+  }
+}
