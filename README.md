@@ -80,6 +80,25 @@ python build_deck_dsc.py --render --pdf   # -> output/dsc/SCANVAS_DSC_S17.pptx (
   feeds slides 6, 10, 11, 13 and Appendix C: pack Rp49K, session Rp1M, base 600 packs + 48 sessions = Rp77.4M,
   capital need Rp200M. Change a number there and update every slide that quotes it.
 
+## Founders Arena / DSC Season 17 v4 (Oct 2026)
+
+```
+python build_deck_dsc4.py --render --pdf   # -> output/dsc4/SCANVAS_DSC_S17_v4.pptx (+ .pdf), 15 main + 4 appendix
+```
+
+- Copy: `deck/content_dsc4.py`; new layouts (problem strip, business lead, GTM, financial, funding, roadmap, closing,
+  P&L + cash): `deck/slides_dsc4.py`. Market, competition and traction reuse `slides_itec3`. DSC v3 files untouched.
+- v4 = DSC v3 + ITEC v3 validation story (Prove Magic -> Prove Repeat Value -> Validate Commercial Model -> Scale),
+  after the judges' feedback of 8 Oct 2026. B2B-first, B2C = direct sales + validation. Team: Haikal CEO, Salsabila CMO.
+- Market sized by institutions and geography (DIY -> Central Java -> Indonesia) plus a base-case target of about 40
+  paying institutions; no TAM/SAM/SOM rings. Studio per-drawing price is a hypothesis and is not shown as a price.
+- Financial numbers are the unchanged DSC v3 model; slide 11 now shows net result and cash at month 12, slide 12
+  reconciles Rp200M with the P&L (Rp158M opex + Rp20M production + Rp22M headroom) and shows the validation gates.
+  `[TBD]` on slide 12 = DSC support vs other sources, to be filled in after checking the DSC funding rules.
+- `theme.LOGO` reads the `SCANVAS_LOGO` env var when set, so the deck can be built on machines without
+  `D:/Personal Bisnis`. The committed PDF/previews were rendered with LibreOffice; re-run `--render --pdf` on Windows
+  for the PowerPoint-rendered, font-embedded final.
+
 ## ITEC SEA 2026 Top 30 edition (v2)
 
 ```

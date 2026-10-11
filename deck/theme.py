@@ -1,4 +1,5 @@
 """Colors, fonts, and asset paths shared by every slide."""
+import os
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -6,7 +7,7 @@ ASSETS = ROOT / 'assets'
 TEMPLATE = ASSETS / 'template' / 'freesia_template.pptx'
 GEN = ASSETS / 'gen'          # mockups built by tools/make_mockups.py
 ICONS = ASSETS / 'icons'      # lucide icons rendered by tools/render_icons.py
-LOGO = Path('D:/Personal Bisnis/logo/main.png')
+LOGO = Path(os.environ.get('SCANVAS_LOGO', 'D:/Personal Bisnis/logo/main.png'))   # env override for other machines
 OUTPUT = ROOT / 'output'
 
 # Scanvas design system (website/frontend/DESIGN.md). Violet tints are the ramp of magic-purple.
